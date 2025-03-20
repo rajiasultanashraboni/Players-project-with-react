@@ -1,6 +1,7 @@
 import AvailablePlayers from "./Components/AvailablePlayers"
 import Banner from "./Components/Banner"
 import Header from "./Components/Header"
+import Players from "./Components/players"
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
       <Header></Header>
       <Banner></Banner>
       <AvailablePlayers></AvailablePlayers>
+      <Players></Players>
     </>
   )
 }
