@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/assets/logo.png"
 
-const Header = () => {
+const Header = ({coins}) => {
   return (
     <div className="shadow-md bg-white">
         <nav className="w-[90%] mx-auto flex justify-between items-center py-4 px-6 ">
@@ -20,7 +20,7 @@ const Header = () => {
 
       {/* Coin Button */}
       <button className="flex items-center gap-1 px-4 py-2 border border-gray-400 rounded-xl bg-white shadow-md">
-        <span>0 Coin</span>
+        <span>{coins}</span> Coin
         <img className=" h-8" src="https://img.icons8.com/?size=48&id=sPBQkuep9vDA&format=png" alt="" />
       </button>
     </nav>
