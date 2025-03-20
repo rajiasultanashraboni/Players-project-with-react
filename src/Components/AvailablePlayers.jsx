@@ -2,7 +2,7 @@ import React from "react";
 import Players from "./players";
 import Selected from "./Selected";
 
-const AvailablePlayers = ({toggleState,isActive}) => {
+const AvailablePlayers = ({toggleState,isActive,handleChoosePlayer,selectedPlayers}) => {
   return (
     <section className="p-6">
       <div className="flex justify-between items-center w-[90%] mx-auto">
@@ -15,11 +15,11 @@ const AvailablePlayers = ({toggleState,isActive}) => {
             </button>
             <button onClick={()=>toggleState("selected")} className={`px-4 py-2 rounded-md ${
               isActive.status === "selected" ? "bg-yellow-400" : "border"
-            }`}>Selected (0)</button>
+            }`}>Selected ({selectedPlayers.length})</button>
         </div>
         
       </div>
-      {isActive.status === "available" && <Players />}
+      {isActive.status === "available" && <Players handleChoosePlayer={handleChoosePlayer} />}
       {isActive.status === "selected" && <Selected />}
     </section>
     

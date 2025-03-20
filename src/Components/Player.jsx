@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Player = ({player}) => {
+const Player = ({player,handleChoosePlayer}) => {
     const {biddingPrice,bowlingType,battingType,role,image,country,name,}=player
     return (
         <div className=''>
@@ -19,7 +19,7 @@ const Player = ({player}) => {
             <div className='flex gap-6 items-center'>
                 <p className=' font-bold text-black-400'>Price: {biddingPrice}</p>
                 <div className="card-actions justify-end">
-                <button className="btn">Choose player</button>
+                <button onClick={()=>handleChoosePlayer(player)} className="btn">Choose player</button>
                 </div>
             </div>
         </div>

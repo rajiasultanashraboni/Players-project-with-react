@@ -13,9 +13,21 @@ function App() {
     available: true,
     status: "available",
   });
+  const [selectedPlayers,setSelectedPlayers]=useState([])
 
-  console.log(isActive)
+  const handleChoosePlayer=(player)=>{
+    const isExist = selectedPlayers.find(p=>p.id===player.id)
+    if(isExist){
+      alert('this product is already exist')
+    }
+    else{
+      const newSelectedPlayer = [...selectedPlayers,player]
+      setSelectedPlayers(newSelectedPlayer)
+    }
+  }
+console.log(selectedPlayers)
   
+  // button tooggle is here 
   const toggleState = (status) => {
     if (status === "available") {
       setIsActive({
@@ -44,7 +56,7 @@ function App() {
     <>
       <Header coins={coins}></Header>
       <Banner handleCredit={handleCredit}></Banner>
-      <AvailablePlayers isActive={isActive} toggleState={toggleState}></AvailablePlayers>
+      <AvailablePlayers selectedPlayers={selectedPlayers} handleChoosePlayer={handleChoosePlayer} isActive={isActive} toggleState={toggleState}></AvailablePlayers>
       <Footer></Footer>
       <ToastContainer />
     </>
