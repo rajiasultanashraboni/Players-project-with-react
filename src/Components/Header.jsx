@@ -3,7 +3,8 @@ import logo from "../assets/assets/logo.png"
 
 const Header = () => {
   return (
-    <nav className="flex justify-between items-center py-4 px-6 shadow-md bg-white">
+    <div className="shadow-md bg-white">
+        <nav className="w-[90%] mx-auto flex justify-between items-center py-4 px-6 ">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <img src={logo} alt="Logo" className="h-16" />
@@ -23,6 +24,7 @@ const Header = () => {
         <img className=" h-8" src="https://img.icons8.com/?size=48&id=sPBQkuep9vDA&format=png" alt="" />
       </button>
     </nav>
+    </div>
   );
 };
 
