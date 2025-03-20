@@ -1,7 +1,7 @@
 import React from "react";
 import banner from "../assets/assets/banner-main.png"
 
-const Banner = ({handleCredit,coins}) => {
+const Banner = ({handleCredit}) => {
   return (
     <section className=" w-[90%] mx-auto rounded-lg mt-10 flex justify-center items-center p-10 bg-black">
       <div className="relative w-full max-w-4xl">

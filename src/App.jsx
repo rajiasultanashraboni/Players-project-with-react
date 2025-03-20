@@ -7,19 +7,39 @@ import Players from "./Components/players"
 
 function App() {
   const [coins,setCoin]=useState(0);
+  const [isActive, setIsActive] = useState({
+    available: true,
+    status: "available",
+  });
 
+  console.log(isActive)
+  
+  const toggleState = (status) => {
+    if (status === "available") {
+      setIsActive({
+        available: true,
+        status: "available",
+      });
+    } else {
+      setIsActive({
+        available: false,
+        status: "selected",
+      });
+    }
+  };
+// credit button functionality 
   const handleCredit=(coin)=>{
     const newCoin = coins+coin
     setCoin(newCoin)
 
   }
 
+
   return (
     <>
       <Header coins={coins}></Header>
-      <Banner handleCredit={handleCredit} coins={coins}></Banner>
-      <AvailablePlayers></AvailablePlayers>
-      <Players></Players>
+      <Banner handleCredit={handleCredit}></Banner>
+      <AvailablePlayers isActive={isActive} toggleState={toggleState}></AvailablePlayers>
       <Footer></Footer>
     </>
   )
