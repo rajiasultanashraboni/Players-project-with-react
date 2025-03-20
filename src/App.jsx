@@ -3,7 +3,9 @@ import AvailablePlayers from "./Components/AvailablePlayers"
 import Banner from "./Components/Banner"
 import Footer from "./Components/Footer"
 import Header from "./Components/Header"
-import Players from "./Components/players"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   const [coins,setCoin]=useState(0);
@@ -29,6 +31,9 @@ function App() {
   };
 // credit button functionality 
   const handleCredit=(coin)=>{
+    toast.success("money is Successfully added", {
+      position: "top-center"
+    });
     const newCoin = coins+coin
     setCoin(newCoin)
 
@@ -41,6 +46,7 @@ function App() {
       <Banner handleCredit={handleCredit}></Banner>
       <AvailablePlayers isActive={isActive} toggleState={toggleState}></AvailablePlayers>
       <Footer></Footer>
+      <ToastContainer />
     </>
   )
 }
