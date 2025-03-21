@@ -5,9 +5,20 @@ import Footer from "./Components/Footer"
 import Header from "./Components/Header"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect } from 'react';
 
 
 function App() {
+  // fetch data 
+  const [players,setPlayers]=useState([])
+  
+      useEffect(()=>{
+          fetch('players.json')
+          .then(res=>res.json())
+          .then(data=>setPlayers(data.players))
+  
+      },[])
+  // coin add is here 
   const [coins,setCoin]=useState(0);
   const [isActive, setIsActive] = useState({
     available: true,
@@ -72,7 +83,7 @@ function App() {
     <>
       <Header coins={coins}></Header>
       <Banner handleCredit={handleCredit}></Banner>
-      <AvailablePlayers selectedPlayers={selectedPlayers} handleChoosePlayer={handleChoosePlayer} isActive={isActive} toggleState={toggleState}></AvailablePlayers>
+      <AvailablePlayers selectedPlayers={selectedPlayers} handleChoosePlayer={handleChoosePlayer} isActive={isActive} toggleState={toggleState} players={players} ></AvailablePlayers>
       <Footer></Footer>
       <ToastContainer />
     </>
