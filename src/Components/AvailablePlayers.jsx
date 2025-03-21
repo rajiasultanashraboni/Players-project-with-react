@@ -2,7 +2,7 @@ import React from "react";
 import Players from "./players";
 import Selected from "./Selected";
 
-const AvailablePlayers = ({toggleState,isActive,handleChoosePlayer,selectedPlayers,players}) => {
+const AvailablePlayers = ({toggleState,isActive,handleChoosePlayer,selectedPlayers,players,handleRemovePlayer}) => {
   return (
     <section className="p-6">
       <div className="flex justify-between items-center w-[90%] mx-auto">
@@ -24,7 +24,7 @@ const AvailablePlayers = ({toggleState,isActive,handleChoosePlayer,selectedPlaye
         
       </div>
       {isActive.status === "available" && <Players handleChoosePlayer={handleChoosePlayer} players={players} />}
-      {isActive.status === "selected" && <Selected selectedPlayers={selectedPlayers} />}
+      {isActive.status === "selected" && <Selected selectedPlayers={selectedPlayers} handleRemovePlayer={handleRemovePlayer} />}
     </section>
     
     

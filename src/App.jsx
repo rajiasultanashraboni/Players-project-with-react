@@ -78,12 +78,25 @@ function App() {
 
   }
 
+  // handle remove player 
+  const handleRemovePlayer=(id)=>{
+    const updatedPlayers = selectedPlayers.filter(player=>player.playerId !==id)
+    setSelectedPlayers(updatedPlayers)
+    toast.info("Player removed!", {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "colored",
+    });
+
+  }
+
+
 
   return (
     <>
       <Header coins={coins}></Header>
       <Banner handleCredit={handleCredit}></Banner>
-      <AvailablePlayers selectedPlayers={selectedPlayers} handleChoosePlayer={handleChoosePlayer} isActive={isActive} toggleState={toggleState} players={players} ></AvailablePlayers>
+      <AvailablePlayers selectedPlayers={selectedPlayers} handleChoosePlayer={handleChoosePlayer} isActive={isActive} toggleState={toggleState} players={players} handleRemovePlayer={handleRemovePlayer} ></AvailablePlayers>
       <Footer></Footer>
       <ToastContainer />
     </>
