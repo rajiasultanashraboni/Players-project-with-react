@@ -16,16 +16,32 @@ function App() {
   const [selectedPlayers,setSelectedPlayers]=useState([])
 
   const handleChoosePlayer=(player)=>{
-    const isExist = selectedPlayers.find(p=>p.id===player.id)
+    const isExist = selectedPlayers.find(p=>p.playerId===player.playerId)
     if(isExist){
-      alert('this product is already exist')
+      toast.error(" This player is already selected!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
     }
     else{
       const newSelectedPlayer = [...selectedPlayers,player]
       setSelectedPlayers(newSelectedPlayer)
+      toast.success(" Player added successfully!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
     }
   }
-console.log(selectedPlayers)
   
   // button tooggle is here 
   const toggleState = (status) => {
