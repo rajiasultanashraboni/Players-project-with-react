@@ -28,6 +28,19 @@ function App() {
 
   const handleChoosePlayer=(player)=>{
     const isExist = selectedPlayers.find(p=>p.playerId===player.playerId)
+    const biddingPrice = parseInt(player.biddingPrice, 10);
+    if(coins<biddingPrice){
+      toast.error(" Not enough money to choose player!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
+      return;
+    }
     if(isExist){
       toast.error(" This player is already selected!", {
         position: "top-center",
@@ -38,11 +51,14 @@ function App() {
         draggable: true,
         theme: "colored",
       });
+      return;
     }
     else{
       const newSelectedPlayer = [...selectedPlayers,player]
       setSelectedPlayers(newSelectedPlayer)
-      toast.success(" Player added successfully!", {
+      const newCoin = coins - biddingPrice;
+      setCoin(newCoin);
+      toast.success(` ${player.name} added successfully!`, {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -70,20 +86,27 @@ function App() {
   };
 // credit button functionality 
   const handleCredit=(coin)=>{
+    const newCoin = coins+coin
+    setCoin(newCoin)
     toast.success("money is Successfully added", {
       position: "top-center"
     });
-    const newCoin = coins+coin
-    setCoin(newCoin)
+    
 
   }
 
   // handle remove player 
   const handleRemovePlayer=(id)=>{
+    const removedPlayer = selectedPlayers.find((player) => player.playerId === id);
+
+  if (removedPlayer) {
+    const newCoin = coins + parseInt(removedPlayer.biddingPrice);
+    setCoin(newCoin);
+  }
     const updatedPlayers = selectedPlayers.filter(player=>player.playerId !==id)
     setSelectedPlayers(updatedPlayers)
-    toast.info("Player removed!", {
-      position: "top-right",
+    toast.info(`${removedPlayer.name} removed successfully!`, {
+      position: "top-center",
       autoClose: 2000,
       theme: "colored",
     });
