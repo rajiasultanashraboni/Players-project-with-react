@@ -32,7 +32,7 @@ function App() {
     if(coins<biddingPrice){
       toast.error(" Not enough money to choose player!", {
         position: "top-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -44,7 +44,7 @@ function App() {
     if(isExist){
       toast.error(" This player is already selected!", {
         position: "top-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -60,7 +60,7 @@ function App() {
       setCoin(newCoin);
       toast.success(` ${player.name} added successfully!`, {
         position: "top-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -107,7 +107,7 @@ function App() {
     setSelectedPlayers(updatedPlayers)
     toast.info(`${removedPlayer.name} removed successfully!`, {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 1000,
       theme: "colored",
     });
 
